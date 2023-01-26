@@ -5,6 +5,6 @@ const title = " ",
     fullPrice = " ",
     adaptive = " ";
 
-    alert =(" первое занятия ");
+    alert =("первое занятия ");
     
     console.log('первое занятие');
