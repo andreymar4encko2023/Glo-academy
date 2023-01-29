@@ -4,7 +4,7 @@ rollback  = 20,
 fullPrice = 10000,
 adaptive = true;
 
-let =screens = 'Простые, Сложные, Интерактивные';
+let screens = 'Простые, Сложные, Интерактивные';
 
 console.log( typeof(title), typeof(fullPrice ),typeof(adaptive)) ;
 
