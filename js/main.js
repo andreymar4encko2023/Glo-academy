@@ -102,7 +102,7 @@ servicePercentPrice=getServicePercentPrices()
 console.log(allServicePrices)
 console.log ( getRollbackMassege(fullPrice) );
 console.log(fullPrice)
-console.log(servicePercentPrice)
+console.log(servicePercentPrice) 
 
 
 
