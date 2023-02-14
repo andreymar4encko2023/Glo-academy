@@ -38,9 +38,7 @@ const appData = {
 
 
         appData.adaptive = confirm('Нужен ли адаптив на сайте?')
-        // do {
-        //     appData.screenPrice = +prompt('Сколько будет стоить данная работа?', 12000)
-        // } while (!appData.numberСheck(appData.screenPrice)) 
+        
 
 
 
@@ -95,7 +93,7 @@ const appData = {
 
         }
 
-        //  appData.allServicePrices
+       
     },
     getFullPrice: function () {
         appData.fullPrice = appData.screenPrice + appData.allServicePrices
