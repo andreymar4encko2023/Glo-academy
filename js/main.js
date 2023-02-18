@@ -18,53 +18,46 @@ const appData = {
     start: function () {
         appData.getTitle()
         appData.asking()
-
         appData.getAllServicePrices()
         appData.getFullPrice()
-
-
         appData.getServicePercentPrices()
-
-
         appData.getRollbackMassege(appData.fullPrice)
-
         appData.logger()
     },
     numberСheck: function (number) {
         return !isNaN(parseFloat(number) && isFinite(number))
     },
     asking: function () {
-
-
-
         appData.adaptive = confirm('Нужен ли адаптив на сайте?')
         
-
-
-
         for (let i = 0; i < 2; i++) {
             let neme = ''
             let price = 0
+
             do {
-                neme = prompt('какие типы экранов нужны').toLowerCase().split(',')
-            } while (!isNaN(neme))
+                neme = prompt('какие типы экранов нужны')
+            } while ( !isNaN(neme) )
+
             do {
                 price = +prompt('Сколько будет стоить данная работа?', 12000)
-            } while (!appData.numberСheck(price))
-            appData.screens.push({
-                id: i,
-                neme: name,
-                price: price
-            })
+
+            } while (!appData.numberСheck( price) )
+            
+            appData.screens.push({id: i,neme: neme, price: price})
+          
+
+        }
+
+        for (let scren of appData.screens){
+appData.screenPrice+= scren.price
         }
         for (let i = 0; i < 2; i++) {
             let name = " "
 
             do {
-                neme = prompt('Какой дополнительный тип услуги нужен?')
+                name = prompt('Какой дополнительный тип услуги нужен?')
 
-
-            } while (!isNaN(neme))
+            } while (!isNaN(name))
             let price = 0
 
             do {
@@ -73,35 +66,24 @@ const appData = {
 
             while (!appData.numberСheck(price))
 
-            appData.services[neme] = +price
-
+            appData.services[name] = +price
         };
-
-
-
-
-
 
 
     },
     getAllServicePrices: function () {
         for (let key in appData.services) {
-            appData.allServicePrices += appData.services[key]
-
-
-
-
+            appData.allServicePrices += +appData.services[key]
         }
-
-       
     },
+
     getFullPrice: function () {
         appData.fullPrice = appData.screenPrice + appData.allServicePrices
     },
 
     getServicePercentPrices: function () {
         appData.servicePercentPrice = Math.ceil(appData.fullPrice - (appData.fullPrice * appData.rollback) / 100);
-        // return appData.servicePercentPrice
+        
     },
     getTitle: function () {
 
@@ -134,9 +116,6 @@ const appData = {
         for (let key in appData) {
             console.log(key + ': ' + appData[key]);
         }
-
-
-
     }
 }
 appData.start()
