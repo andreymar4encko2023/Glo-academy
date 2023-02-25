@@ -3,29 +3,13 @@ const btn = document.getElementsByClassName("handler_btn")
 const sum = document.querySelector('.screen-btn').textContent
 const calculate = btn[0].textContent
 const reset = btn[1].textContent
-let item =""
-let item2="" 
 const range = document.querySelector('.rollback > div > input  ')
 const  rangeValue = document.querySelector('rooback> span')
-const otherItems = document.querySelectorAll('.other-items' ) 
+const otherItemsP = document.querySelectorAll('.other-items.percent' ) 
+const otherItemsN = document.querySelectorAll('.other-items.number' ) 
 const totalInput = document.getElementsByClassName('total-input')
 let screen = document.querySelectorAll('.screen')
- for(let i=0;i<otherItems.length;i++){
-    if(otherItems[i].classList.contains('percent')){
-     item =otherItems[i].innerText
-     
-     
-    }else{
-        item2 =otherItems[i].innerText
-    }
-    
- }
- for(let i=0;i<totalInput.length;i++){
-    let input = totalInput[i]
-    console.log(input)
- }
-
-
+let [totalInput1,totalInput2,totalInput3,totalInput4] =totalInput
 
 
 
