@@ -10,10 +10,14 @@ const otherItemsP = document.querySelectorAll('.other-items.percent');
 const otherItemsN = document.querySelectorAll('.other-items.number');
 const totalInput = document.getElementsByClassName('total-input');
 const input = document.querySelector('.main-controls__input>input')
+let selectAtribute = ""
 
 let screens = document.querySelectorAll('.screen');
 let [totalInput1, totalInput2, totalInput3, totalInput4, totalInput5] = totalInput;
 let a = true;
+let b = true
+let error = 0
+let cout = 0
 const appData = {
     title: "",
     screens: [],
@@ -31,31 +35,78 @@ const appData = {
     servicePercentPrice: 0,
     rollback: 0,
     checkScreans: function () {
+        let countI = 0
+        let count = 0
+        let input = document.querySelectorAll('.screen>.main-controls__input>input')
+        let arrInput = []
+        let arr = []
         let screens = document.querySelectorAll('.screen');
         screens.forEach(function (screan, ) {
             const select = screan.querySelector('select');
-            let selectAtribute = select.options[select.selectedIndex];
-           
-            if (selectAtribute.hasAttribute('selected')) {
-                a = true;
-            } else {
-                a = false;
-            };
-
+            selectAtribute = select.options[select.selectedIndex];
+            arr.push({
+                name: (selectAtribute.textContent)
+            })
         });
+       
+
+        input.forEach(el => {
+            arrInput.push({
+                inputName: el.value
+            })
+        })
+
+
+      
+        for (let i = 0; i < arr.length; i++) {
+            let m = arr[i].name
+            if (m !== "Тип экранов") {
+                count++
+            }
+        }
+        for (let i = 0; i < arrInput.length; i++) {
+
+            let m = arrInput[i].inputName
+
+            if (m !== "") {
+                countI++
+
+            }
+
+        
+        }
+      
+
+        if (arrInput.length == countI) {
+            b = true
+        } else {
+            b = false
+        }
+        if (arr.length == count) {
+            a = true
+        } else {
+            a = false
+
+
+        }
     },
+
     init: function () {
         appData.rollBack();
         appData.addTitle();
         calculate.addEventListener('click', () => {
             appData.checkScreans();
-            if (a != true && +input.value >= 0 || input.value === "Количество экранов") {
+            if (a == true && b == true) {
                 appData.start()
+
             } else {
-                alert('вы не выбрали не одного экранна или указали некоректное  количество')
+
+
+                alert('вы не выбрали не одного экранна или указали некоректное  количество перезагрузите страницу и укажите верное значение и нажмите кнопку раситать')
             }
-            
+
         })
+
         ButtonAdd.addEventListener('click', appData.addScreenBlock)
     },
     addTitle: function () {
@@ -75,6 +126,8 @@ const appData = {
             let rangeText = document.querySelector('.main-controls__range>span');
             rangeText.textContent = e.target.value;
             appData.rollback = +e.target.value;
+            appData.getServicePercentPrices();
+            totalInput5.value = appData.servicePercentPrice;
 
         });
     },
