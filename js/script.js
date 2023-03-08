@@ -67,14 +67,16 @@ const appData = {
         for (let i = 0; i < arrInput.length; i++) {
 
             let m = arrInput[i].inputName
-
-            if (m !== "") {
+            
+            if (m !== "" ) {
                 countI++
 
             }
+           
 
         
         }
+       
       
 
         if (arrInput.length == countI) {
